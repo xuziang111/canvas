@@ -6,37 +6,56 @@
 canvas{
 background:#eee;
 }
+#btn{
+position:fixed;
+left:0;
+bottom:0;
+}
 </style>
 <head>
 <body>
 <canvas id = 'board' width:100 heighr:100px>
 </canvas>
-
+	
+<button id='btn'>橡皮</button>
 
 <script type="text/javascript">
+var eraser = false;
+btn.onclick = function() {
+  eraser = !eraser;
+  //console.log(eraser);
+}
 var board = document.getElementById('board');
 var context = board.getContext('2d');
 var paintFlag = false;
 canvasSize();
 autoCanvasSize();
 var lastPoint = {x:undefined,y:undefined};
+
 board.onmousedown = function (event) {
-  paintFlag = true;
   var x = event.clientX;
   var y = event.clientY;
-  lastPoint = {x:x,y:y};
-  return lastPoint;
+  paintFlag = true;
+  if(eraser){
+    context.clearRect(x,y,4,4);
+  }else{
+    lastPoint = {x:x,y:y};
+    } 
 };
 board.onmousemove = function (event) {
-  console.log(paintFlag);
+  //console.log(paintFlag);
+  var x = event.clientX;
+  var y = event.clientY;
   if(paintFlag){
-    var x = event.clientX;
-    var y = event.clientY;
-	console.log(x,y);
-    var newPoint = {x:x,y:y};
-    drawLine(lastPoint.x,lastPoint.y,x,y);
-    lastPoint = newPoint;
-	drawArc(x,y)
+  if(eraser){
+    context.clearRect(x,y,4,4);
+  }else{
+      //console.log(x,y);
+      var newPoint = {x:x,y:y};
+      drawLine(lastPoint.x,lastPoint.y,x,y);
+      lastPoint = newPoint;
+      drawArc(x,y)
+	}
   }
 };
 board.onmouseup = function() {
@@ -60,7 +79,7 @@ function drawArc(x,y){
   context.fillStyle= 'black';
   context.arc(x,y,1.5,0,Math.PI*2);
   context.fill();
-  console.log(x,y);
+  //console.log(x,y);
 }
 function drawLine(x1,y1,x2,y2) {
   context.beginPath();
