@@ -1,0 +1,18 @@
+* { margin: 0; padding: 0; }
+canvas{
+background:#eee;
+}
+#active{
+position:fixed;
+left:0;
+bottom:0;
+}
+#active>#pen{
+  display:none;
+}
+#active.x >#pen{
+  display:inline-block;
+}
+#active.x>#eraser{
+  display:none;
+}
