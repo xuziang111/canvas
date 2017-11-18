@@ -6,74 +6,42 @@
 canvas{
 background:#eee;
 }
-#btn{
+#active{
 position:fixed;
 left:0;
 bottom:0;
+}
+#active>#pen{
+  display:none;
+}
+#active.x >#pen{
+  display:inline-block;
+}
+#active.x>#eraser{
+  display:none;
 }
 </style>
 <head>
 <body>
 <canvas id = 'board' width:100 heighr:100px>
 </canvas>
-	
-<button id='btn'>橡皮</button>
-
+<div id = 'active'>	
+  <button id='eraser'>使用橡皮</button><button id='pen'>使用画笔</button>
+</div>
 <script type="text/javascript">
-var eraser = false;
-btn.onclick = function() {
-  eraser = !eraser;
-  //console.log(eraser);
-}
+
 var board = document.getElementById('board');
 var context = board.getContext('2d');
-var paintFlag = false;
-canvasSize();
-autoCanvasSize();
-var lastPoint = {x:undefined,y:undefined};
 
-board.onmousedown = function (event) {
-  var x = event.clientX;
-  var y = event.clientY;
-  paintFlag = true;
-  if(eraser){
-    context.clearRect(x,y,4,4);
-  }else{
-    lastPoint = {x:x,y:y};
-    } 
-};
-board.onmousemove = function (event) {
-  //console.log(paintFlag);
-  var x = event.clientX;
-  var y = event.clientY;
-  if(paintFlag){
-  if(eraser){
-    context.clearRect(x,y,4,4);
-  }else{
-      //console.log(x,y);
-      var newPoint = {x:x,y:y};
-      drawLine(lastPoint.x,lastPoint.y,x,y);
-      lastPoint = newPoint;
-      drawArc(x,y)
-	}
-  }
-};
-board.onmouseup = function() {
- paintFlag = false;
-};
-board.onmouseout = function() {
- paintFlag = false;
-}
-function canvasSize() {
-  var x = document.documentElement.clientWidth;
-  var y = document.documentElement.clientHeight;
-  board.width = x;
-  board.height = y;
-};
-function autoCanvasSize() {
-  window.onresize = canvasSize;
-};
+autoCanvasSize(board);
+listenMouse(board);
 
+eraser.onclick = function() {
+  active.className = 'x';
+};
+pen.onclick = function() {
+  active.className = '';
+};
 function drawArc(x,y){
   context.beginPath();
   context.fillStyle= 'black';
@@ -89,6 +57,66 @@ function drawLine(x1,y1,x2,y2) {
   context.stroke();
   context.closePath();
 }
+  
+function listenMouse(board) {
+  var paintFlag = false;
+  var eraserOn = false;
+  active.onclick = function() {
+  eraserOn = !eraserOn;
+    //console.log(eraserOn);
+  }
+  var lastPoint = {x:undefined,y:undefined};
+  board.onmousedown = function (event) {
+    var x = event.clientX;
+    var y = event.clientY;
+    paintFlag = true;
+    if(eraserOn){
+      context.clearRect(x-5,y-5,10,10);
+    }else{
+      lastPoint = {x:x,y:y};
+      } 
+  };
+  board.onmousemove = function (event) {
+    //console.log(paintFlag);
+    var x = event.clientX;
+    var y = event.clientY;
+    if(paintFlag){
+    if(eraserOn){
+      context.clearRect(x-5,y-5,10,10);
+    }else{
+        //console.log(x,y);
+        var newPoint = {x:x,y:y};
+        drawLine(lastPoint.x,lastPoint.y,x,y);
+        lastPoint = newPoint;
+        drawArc(x,y)
+	}
+  }
+};
+  board.onmouseup = function() {
+   paintFlag = false;
+  };
+  board.onmouseout = function() {
+   paintFlag = false;
+  }
+};
+function canvasSize() {
+  var x = document.documentElement.clientWidth;
+  var y = document.documentElement.clientHeight;
+  board.width = x;
+  board.height = y;
+};
+function autoCanvasSize(board) {
+    function canvasSize() {
+    var x = document.documentElement.clientWidth;
+    var y = document.documentElement.clientHeight;
+    board.width = x;
+    board.height = y;
+  };
+  canvasSize();
+  window.onresize = function() {
+    canvasSize();
+  };
+};
 </script>
 </body>
 <html>
