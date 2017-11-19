@@ -1,9 +1,10 @@
 var board = document.getElementById('board');
 var context = board.getContext('2d');
+var black,red,green,blue;
 autoCanvasSize();
 listenMouse();
 getColor();
-var black,red,green,blue;
+
 function getColor() {
 	black = document.getElementById('color-black');
 	red = document.getElementById('color-red');
@@ -152,3 +153,6 @@ function autoCanvasSize() {
     canvasSize();
   };
 };
+clear.onclick = function () {
+	context.clearRect(0,0,board.width,board.height);
+}
