@@ -2,9 +2,49 @@ var board = document.getElementById('board');
 var context = board.getContext('2d');
 autoCanvasSize();
 listenMouse();
+getColor();
+var black,red,green,blue;
+function getColor() {
+	black = document.getElementById('color-black');
+	red = document.getElementById('color-red');
+	green = document.getElementById('color-green');
+	blue = document.getElementById('color-blue');
+	black.onclick = function() {
+		context.fillStyle = 'black';
+		context.strokeStyle = 'black';
+		black.classList.add('active');
+		red.classList.remove('active');
+		green.classList.remove('active');
+		blue.classList.remove('active');
+	};
+	red.onclick = function() {
+		context.fillStyle = 'red';
+		context.strokeStyle = 'red';
+		red.classList.add('active');
+		black.classList.remove('active');
+		green.classList.remove('active');
+		blue.classList.remove('active');
+	};
+	green.onclick = function() {
+		context.fillStyle = 'green';
+		context.strokeStyle = 'green';
+		green.classList.add('active');
+		red.classList.remove('active');
+		black.classList.remove('active');
+		blue.classList.remove('active');
+	};
+	blue.onclick = function() {
+		context.fillStyle = 'blue';
+		context.strokeStyle = 'blue';
+		blue.classList.add('active');
+		red.classList.remove('active');
+		green.classList.remove('active');
+		black.classList.remove('active');
+	};
+	
+}
 function drawArc(x,y){
   context.beginPath();
-  context.fillStyle= 'black';
   context.arc(x,y,1.5,0,Math.PI*2);
   context.fill();
 }
