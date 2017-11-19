@@ -2,15 +2,28 @@
 <html>
 <head>
 <title>一个简单画板</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <link rel='stylesheet' href='./style.css'>
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<script src='//at.alicdn.com/t/font_479788_xb2kdubttk18xgvi.js'></script>
 </head>
 <body>
 <canvas id = 'board' width:100 heighr:100px>
 </canvas>
-<div id = 'active'>	
-  <button id='eraser'>使用橡皮</button>
-  <button id='pen'>使用画笔</button>
+<div id = 'tool'>	
+  <svg class="icon active" id='pen' aria-hidden="true">
+    <use xlink:href="#icon-pen"></use>
+  </svg>
+  <svg class="icon" id = 'eraser' aria-hidden="true">
+    <use xlink:href="#icon-eraser"></use>
+  </svg>
+</div>
+<div class='colorList'>
+  <ul>
+    <li id='color-black'></li>
+	<li id='color-red'></li>
+	<li id='color-green'></li>
+	<li id='color-blue'></li>
+  </ul>	
 </div>
 <script src='./script.js'></script>
 </body>
