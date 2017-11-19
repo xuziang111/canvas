@@ -1,13 +1,13 @@
 * { margin: 0; padding: 0; }
 canvas{
 background:#eee;
-position:fixed;
+position:absolute;
 top:0;
 left:0
 }
 
 #tool{
-position:fixed;
+position:absolute;
 left:10px;
 top:20px;
 font-size:1.4em;
@@ -24,7 +24,7 @@ font-size:1.4em;
    transition:all 0.2s;
 }
 .colorList{
-	position:fixed;
+	position:absolute;
 	top:55px;
 	left:23px;
 }
