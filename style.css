@@ -2,7 +2,7 @@
 body{
   overflow: hidden;
 }
-canvas{
+#board{
 display:block;
 background:#eee;
 }
