@@ -12,7 +12,9 @@ left:10px;
 top:20px;
 font-size:1.4em;
 }
-
+#tool>.active{
+	font-size:1.2em;
+}
 .icon {
    width: 1em; height: 1em;
    vertical-align: -0.15em;
@@ -28,15 +30,27 @@ font-size:1.4em;
 }
 .colorList ul li{
 	display:block;
-	border:1px solid red;
 	width:20px;
 	height:20px;
 	margin:10px 0;
 	border-radius:50%;
+	transition:all 0.2s;
+	box-shadow: 0 0 4px rgba(0,0,0,0.5);
 }
-#tool>.active{
-	font-size:1.2em;
+
+#color-black{
+	background:black;
 }
 #color-red{
 	background:red;
+}
+#color-green{
+	background:green;
+}
+#color-blue{
+	background:blue;
+}
+.colorList>ul>.active{
+  transform: scale(1.2);
+  box-shadow: 0 0 4px rgba(0,0,0,0.9);
 }
