@@ -2,12 +2,6 @@ var board = document.getElementById('board');
 var context = board.getContext('2d');
 autoCanvasSize();
 listenMouse();
-eraser.onclick = function() {
-  active.className = 'x';
-};
-pen.onclick = function() {
-  active.className = '';
-};
 function drawArc(x,y){
   context.beginPath();
   context.fillStyle= 'black';
@@ -26,17 +20,47 @@ function drawLine(x1,y1,x2,y2) {
 function listenMouse() {
   var paintFlag = false;
   var eraserOn = false;
-  active.onclick = function() {
-  eraserOn = !eraserOn;
-  }
+  eraser.onclick = function() {
+    eraserOn = true;
+	eraser.classList.add('active');
+	pen.classList.remove('active');
+  };
+  pen.onclick = function() {
+    eraserOn = false;
+	pen.classList.add('active');
+	eraser.classList.remove('active');
+  };
   var lastPoint = {x:undefined,y:undefined};
   console.log('ontouchstart' in document);
   if('ontouchstart' in document){
-	  console.log('ontouchstart' in document);
-	  board.ontouchstart = function(event) {
-		  alert('haha')
-	  };
- 
+	console.log('ontouchstart' in document);
+    board.ontouchstart = function (event) {
+      var x = event.touches[0].clientX;
+      var y = event.touches[0].clientY;
+      paintFlag = true;
+      if(eraserOn){
+        context.clearRect(x-5,y-5,10,10);
+      }else{
+        lastPoint = {x:x,y:y};
+        } 
+    };	  
+    board.ontouchmove = function (event) {
+      var x = event.touches[0].clientX;
+      var y = event.touches[0].clientY;
+      if(paintFlag){
+        if(eraserOn){
+          context.clearRect(x-5,y-5,10,10);
+        }else{
+            var newPoint = {x:x,y:y};
+            drawLine(lastPoint.x,lastPoint.y,x,y);
+            lastPoint = newPoint;
+            drawArc(x,y)
+  	    }
+      }
+    };
+    board.ontouchend = function() {
+     paintFlag = false;
+    };
   }else{
     board.onmousedown = function (event) {
       var x = event.clientX;
