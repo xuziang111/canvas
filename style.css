@@ -1,21 +1,42 @@
 * { margin: 0; padding: 0; }
 canvas{
 background:#eee;
-  position:fixed;
+position:fixed;
 top:0;
 left:0
 }
-#active{
+
+#tool{
 position:fixed;
-left:0;
-bottom:0;
+left:10px;
+top:20px;
+font-size:1.4em;
 }
-#active>#pen{
-  display:none;
+
+.icon {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+   margin-left:15px;
+   transition:all 0.2s;
 }
-#active.x >#pen{
-  display:inline-block;
+.colorList{
+	position:fixed;
+	top:55px;
+	left:23px;
 }
-#active.x>#eraser{
-  display:none;
+.colorList ul li{
+	display:block;
+	border:1px solid red;
+	width:20px;
+	height:20px;
+	margin:10px 0;
+	border-radius:50%;
+}
+#tool>.active{
+	font-size:1.2em;
+}
+#color-red{
+	background:red;
 }
