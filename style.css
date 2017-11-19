@@ -13,7 +13,7 @@ top:0;
 }
 
 #tool{
-position:fixed;
+position:absolute;
 left:10px;
 top:20px;
 font-size:1.4em;
@@ -31,7 +31,7 @@ z-index:999;
    transition:all 0.2s;
 }
 .colorList{
-	position:fixed;
+	position:absolute;
 	top:55px;
 	left:23px;
 	transition:all 0.2s;
