@@ -72,9 +72,7 @@ function listenMouse() {
 	eraser.classList.remove('active');
   };
   var lastPoint = {x:undefined,y:undefined};
-  console.log('ontouchstart' in document);
-  if('ontouchstart' in document){
-	console.log('ontouchstart' in document);
+  if(document.body.ontouchstart !== undefined){
     board.ontouchstart = function (event) {
       var x = event.touches[0].clientX;
       var y = event.touches[0].clientY;
