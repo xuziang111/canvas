@@ -2,8 +2,9 @@ var board = document.getElementById('board');
 var context = board.getContext('2d');
 var black,red,green,blue;
 autoCanvasSize();
-listenMouse();
 getColor();
+listenMouse();
+
 
 function getColor() {
 	black = document.getElementById('color-black');
@@ -155,4 +156,13 @@ function autoCanvasSize() {
 };
 clear.onclick = function () {
 	context.clearRect(0,0,board.width,board.height);
+}
+save.onclick = function() {
+	var url = board.toDataURL('image/png')
+	var a = document.createElement('a');
+	document.body.appendChild(a);
+	a.href = url;
+	a.download = 'img';
+	a.target = '_blank';
+	a.click();
 }
