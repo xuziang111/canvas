@@ -1,5 +1,9 @@
 * { margin: 0; padding: 0; }
+body{
+  overflow: hidden;
+}
 canvas{
+display:block;
 background:#eee;
 position:absolute;
 top:0;
@@ -24,9 +28,10 @@ font-size:1.4em;
    transition:all 0.2s;
 }
 .colorList{
-	position:absolute;
+	position:fixed;
 	top:55px;
 	left:23px;
+	transition:all 0.2s;
 }
 .colorList ul li{
 	display:block;
@@ -34,7 +39,6 @@ font-size:1.4em;
 	height:20px;
 	margin:10px 0;
 	border-radius:50%;
-	transition:all 0.2s;
 	box-shadow: 0 0 4px rgba(0,0,0,0.5);
 }
 
