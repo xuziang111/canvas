@@ -13,7 +13,6 @@ function drawArc(x,y){
   context.fillStyle= 'black';
   context.arc(x,y,1.5,0,Math.PI*2);
   context.fill();
-  //console.log(x,y);
 }
 function drawLine(x1,y1,x2,y2) {
   context.beginPath();
@@ -29,7 +28,6 @@ function listenMouse(board) {
   var eraserOn = false;
   active.onclick = function() {
   eraserOn = !eraserOn;
-    //console.log(eraserOn);
   }
   var lastPoint = {x:undefined,y:undefined};
   board.onmousedown = function (event) {
@@ -43,14 +41,12 @@ function listenMouse(board) {
       } 
   };
   board.onmousemove = function (event) {
-    //console.log(paintFlag);
     var x = event.clientX;
     var y = event.clientY;
     if(paintFlag){
     if(eraserOn){
       context.clearRect(x-5,y-5,10,10);
     }else{
-        //console.log(x,y);
         var newPoint = {x:x,y:y};
         drawLine(lastPoint.x,lastPoint.y,x,y);
         lastPoint = newPoint;
