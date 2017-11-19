@@ -7,7 +7,7 @@ left:0
 }
 
 #tool{
-position:absolute;
+position:fixed;
 left:10px;
 top:20px;
 font-size:1.4em;
