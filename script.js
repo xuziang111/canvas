@@ -5,7 +5,6 @@ autoCanvasSize();
 getColor();
 listenMouse();
 
-
 function getColor() {
 	black = document.getElementById('color-black');
 	red = document.getElementById('color-red');
@@ -157,8 +156,7 @@ function autoCanvasSize() {
 
 clear.onclick = function () {
 	context.clearRect(0,0,board.width,board.height);
-}
-
+};
 save.onclick = function() {
 	var url = board.toDataURL('image/png')
 	var a = document.createElement('a');
@@ -167,4 +165,4 @@ save.onclick = function() {
 	a.download = 'img';
 	a.target = '_blank';
 	a.click();
-}
+};
