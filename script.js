@@ -8,7 +8,7 @@ getPenWidth();
 listenMouse();
 
 document.ontouchmove = function (event){
-	event.preventDefault;
+	event.preventDefault();
 }
 
 function getColor() {
