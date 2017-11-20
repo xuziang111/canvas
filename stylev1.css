@@ -33,6 +33,7 @@ z-index:1;
    overflow: hidden;
    margin-left:15px;
    transition:all 0.2s;
+	display:inline-block;
 }
 .colorList{
 	position:absolute;
