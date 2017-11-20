@@ -1,5 +1,6 @@
 var board = document.getElementById('board');
 var context = board.getContext('2d');
+context.lineWidth = 4;
 var black,red,green,blue,jiw;
 autoCanvasSize();
 getColor();
@@ -81,7 +82,6 @@ function drawLine(x1,y1,x2,y2) {
 function listenMouse() {
   var paintFlag = false;
   var eraserOn = false;
-  context.lineWidth = 4;
   eraser.onclick = function() {
     eraserOn = true;
 	eraser.classList.add('active');
