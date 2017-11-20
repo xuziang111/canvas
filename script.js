@@ -169,9 +169,11 @@ function autoCanvasSize() {
 	context.lineWidth = jiw;
   };
   canvasSize();
+  if(document.body.ontouchstart === undefined){
   window.onresize = function() {
     canvasSize();
   };
+  }
 };
 
 clear.onclick = function () {
