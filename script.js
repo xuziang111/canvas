@@ -1,6 +1,5 @@
 var board = document.getElementById('board');
 var context = board.getContext('2d');
-context.lineWidth = 4;
 var black,red,green,blue,jiw;
 autoCanvasSize();
 getColor();
@@ -9,6 +8,7 @@ listenMouse();
 
 document.ontouchmove = function (event){
 	event.preventDefault();
+	event.stopPropagation();
 }
 
 function getColor() {
@@ -82,6 +82,7 @@ function drawLine(x1,y1,x2,y2) {
 function listenMouse() {
   var paintFlag = false;
   var eraserOn = false;
+  context.lineWidth = 4;
   eraser.onclick = function() {
     eraserOn = true;
 	eraser.classList.add('active');
@@ -169,11 +170,12 @@ function autoCanvasSize() {
 	context.lineWidth = jiw;
   };
   canvasSize();
-  if(document.body.ontouchstart === undefined){
   window.onresize = function() {
+	var imageData = context.getImageData(0,0,board.width,board.height);
     canvasSize();
+	context.putImageData(imageData,0,0);
   };
-  }
+
 };
 
 clear.onclick = function () {
