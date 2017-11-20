@@ -3,7 +3,12 @@ var context = board.getContext('2d');
 var black,red,green,blue;
 autoCanvasSize();
 getColor();
+getPenWidth();
 listenMouse();
+
+document.ontouchmove = function (event){
+	event.prevenDefault;
+}
 
 function getColor() {
 	black = document.getElementById('color-black');
@@ -44,14 +49,27 @@ function getColor() {
 	};
 	
 }
-function drawArc(x,y){
+
+function getPenWidth() {
+	penThin.onclick = function(){
+		context.lineWidth = 4;
+		penThin.classList.add('active');
+        penThick.classList.remove('active');
+	}
+    penThick.onclick = function(){
+		context.lineWidth = 6;
+		penThick.classList.add('active');	
+        penThin.classList.remove('active');		
+	}
+};
+
+function drawArc(x,y,raidus){
   context.beginPath();
-  context.arc(x,y,1.5,0,Math.PI*2);
+  context.arc(x,y,raidus-0.5,0,Math.PI*2);
   context.fill();
 }
 function drawLine(x1,y1,x2,y2) {
   context.beginPath();
-  context.lineWidth = 4;
   context.moveTo(x1,y1);
   context.lineTo(x2,y2);
   context.stroke();
@@ -61,6 +79,7 @@ function drawLine(x1,y1,x2,y2) {
 function listenMouse() {
   var paintFlag = false;
   var eraserOn = false;
+  context.lineWidth = 4;
   eraser.onclick = function() {
     eraserOn = true;
 	eraser.classList.add('active');
@@ -93,7 +112,7 @@ function listenMouse() {
             var newPoint = {x:x,y:y};
             drawLine(lastPoint.x,lastPoint.y,x,y);
             lastPoint = newPoint;
-            drawArc(x,y)
+            drawArc(x,y,context.lineWidth/2)
   	    }
       }
     };
@@ -121,7 +140,7 @@ function listenMouse() {
             var newPoint = {x:x,y:y};
             drawLine(lastPoint.x,lastPoint.y,x,y);
             lastPoint = newPoint;
-            drawArc(x,y)
+            drawArc(x,y,context.lineWidth/2)
   	    }
       }
     };
