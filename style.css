@@ -3,19 +3,14 @@ ul,ol{list-style: none;}
 body{
   position:relative;
 }
-#boardx{
-	position:absolute;
-	top:0;
-	left:0;
-		z-index:-1;
-}
+
 #board{
 display:block;
 background:#eee;
 position:absolute;
 left:0;
 top:0;
-	z-index:-1;
+z-index:-1;
 }
 
 #tool{
@@ -40,7 +35,6 @@ z-index:1;
 	position:absolute;
 	top:55px;
 	left:23px;
-	transition:all 0.2s;
 	z-index:1;
 }
 .colorList ul li{
@@ -50,6 +44,7 @@ z-index:1;
 	margin:10px 0;
 	border-radius:50%;
 	box-shadow: 0 0 4px rgba(0,0,0,0.5);
+	transition:all 0.3s;
 }
 
 #color-black{
@@ -68,9 +63,24 @@ z-index:1;
   transform: scale(1.2);
   box-shadow: 0 0 4px rgba(0,0,0,0.9);
 }
-li{
+span{
 	display:block;
+	background-color:black;
+	margin:15px 10px;
+	width:20px;
 }
-ul{
-	display:block;
+#penWidth{
+	position:fixed;
+	top:15px;
+	right:20px;
+	z-index:1;
+}
+#penWidth>.active{
+	box-shadow:0 0 5px rgba(0,0,0,1);
+}
+#penThin{
+	height:4px;
+}
+#penThick{
+	height:6px;
 }
