@@ -1,6 +1,6 @@
 var board = document.getElementById('board');
 var context = board.getContext('2d');
-var black,red,green,blue;
+var black,red,green,blue,jiw;
 autoCanvasSize();
 getColor();
 getPenWidth();
@@ -53,11 +53,13 @@ function getColor() {
 function getPenWidth() {
 	penThin.onclick = function(){
 		context.lineWidth = 4;
+		jiw = context.lineWidth;
 		penThin.classList.add('active');
         penThick.classList.remove('active');
 	}
     penThick.onclick = function(){
 		context.lineWidth = 6;
+		jiw = context.lineWidth;
 		penThick.classList.add('active');	
         penThin.classList.remove('active');		
 	}
@@ -164,6 +166,7 @@ function autoCanvasSize() {
     var y = document.documentElement.clientHeight;
     board.width = x;
     board.height = y;
+	context.lineWidth = jiw;
   };
   canvasSize();
   window.onresize = function() {
