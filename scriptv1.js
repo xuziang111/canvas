@@ -174,6 +174,7 @@ function autoCanvasSize() {
 	var imageData = context.getImageData(0,0,board.width,board.height);
     canvasSize();
 	context.putImageData(imageData,0,0);
+	  context.lineWidth=4;
   };
 
 };
