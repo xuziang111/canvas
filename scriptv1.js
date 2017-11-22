@@ -66,12 +66,10 @@ function getPenWidth() {
 	}
 };
 
-function drawArc(x,y,raidus){
-  context.beginPath();
-  context.arc(x,y,raidus-0.5,0,Math.PI*2);
-  context.fill();
-}
+
 function drawLine(x1,y1,x2,y2) {
+  context.lineJoin="round";
+	context.linecap='round':
   context.beginPath();
   context.moveTo(x1,y1);
   context.lineTo(x2,y2);
@@ -115,7 +113,6 @@ function listenMouse() {
             var newPoint = {x:x,y:y};
             drawLine(lastPoint.x,lastPoint.y,x,y);
             lastPoint = newPoint;
-            drawArc(x,y,context.lineWidth/2)
   	    }
       }
     };
@@ -143,7 +140,6 @@ function listenMouse() {
             var newPoint = {x:x,y:y};
             drawLine(lastPoint.x,lastPoint.y,x,y);
             lastPoint = newPoint;
-            drawArc(x,y,context.lineWidth/2)
   	    }
       }
     };
