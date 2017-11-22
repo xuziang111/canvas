@@ -1,21 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Explore
- @xuziang111
- Sign out
- Watch 0
-  Star 0  Fork 0 xuziang111/canvas
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
-Branch: master Find file Copy pathcanvas/scriptv1.js
-91ac627  8 hours ago
-@xuziang111 xuziang111 Update scriptv1.js
-1 contributor
-RawBlameHistory     
-194 lines (185 sloc)  4.83 KB
 var board = document.getElementById('board');
 var context = board.getContext('2d');
 var black,red,green,blue,jiw;
@@ -209,15 +191,3 @@ save.onclick = function() {
 	a.target = '_blank';
 	a.click();
 };
-© 2017 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
-About
