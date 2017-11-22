@@ -69,7 +69,7 @@ function getPenWidth() {
 
 function drawLine(x1,y1,x2,y2) {
   context.lineJoin="round";
-	context.linecap='round':
+	context.linecap='round';
   context.beginPath();
   context.moveTo(x1,y1);
   context.lineTo(x2,y2);
