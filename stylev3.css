@@ -26,6 +26,7 @@ z-index:1;
 #tool>.active{
   font-size:1.2em;
 }
+
 .icon {
    width: 1em; height: 1em;
    vertical-align: -0.15em;
@@ -40,6 +41,7 @@ z-index:1;
 	left:23px;
 	z-index:1;
 }
+
 .colorList ul li{
 	display:block;
 	width:20px;
