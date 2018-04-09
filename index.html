@@ -4,9 +4,8 @@
 <title>一个简易画板</title>
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <link rel='stylesheet' href='./stylev3.css'>
-<script src='//at.alicdn.com/t/font_479788_xb2kdubttk18xgvi.js'></script>
+
 </head>
-	
 <body>
 <div id = 'tool'>	
   <svg class="icon active" id='pen' aria-hidden="true">
@@ -25,10 +24,10 @@
 <div class='colorList'>
   <ul>
     <li id='color-black' class='active'></li>
-	<li id='color-red'></li>
-	<li id='color-green'></li>
-  <li id='color-blue'></li>
-  <li><input id='choose-color' type="color"></li>
+	  <li id='color-red'></li>
+	  <li id='color-green'></li>
+    <li id='color-blue'></li>
+    <li><input id='choose-color' type="color"></li>
   </ul>	
 </div>
 <div id='penWidth'>
@@ -36,10 +35,9 @@
   <span id='penThick'></span>
 </div>
 <div id='boradx'>	
-<canvas id = 'board' width:100 heighr:100px>
-</canvas>
-	</div>
+  <canvas id = 'board'></canvas>
+</div>
+  
 <script src='./scriptv1.js'></script>
 </body>
-	
 </html>

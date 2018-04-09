@@ -1,3 +1,4 @@
+!function(){
 var board = document.getElementById('board');
 var context = board.getContext('2d');
 var black,red,green,blue,jiw,pencolor,penwidth=4;
@@ -199,3 +200,4 @@ document.getElementById('choose-color').onchange = function(e){
   context.strokeStyle = this.value;
   pencolor = this.value
 }
+}()
