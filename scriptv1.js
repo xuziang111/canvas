@@ -193,3 +193,9 @@ save.onclick = function() {
 	a.target = '_blank';
 	a.click();
 };
+
+document.getElementById('choose-color').onchange = function(e){
+  context.fillStyle = this.value;
+  context.strokeStyle = this.value;
+  pencolor = this.value
+}

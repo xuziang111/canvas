@@ -36,17 +36,20 @@ z-index:1;
    transition:all 0.2s;
 }
 .colorList{
-	position:absolute;
-	top:55px;
-	left:23px;
+	position:fixed;
+	top:15px;
+	right:100px;
 	z-index:1;
+}
+.colorList ul{
+	display:flex;
 }
 
 .colorList ul li{
 	display:block;
 	width:20px;
 	height:20px;
-	margin:10px 0;
+	margin:10px 10px;
 	border-radius:50%;
 	box-shadow: 0 0 4px rgba(0,0,0,0.5);
 	transition:all 0.3s;
