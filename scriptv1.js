@@ -1,6 +1,6 @@
 var board = document.getElementById('board');
 var context = board.getContext('2d');
-var black,red,green,blue,jiw;
+var black,red,green,blue,jiw,pencolor,penwidth=4;
 autoCanvasSize();
 getColor();
 getPenWidth();
@@ -18,7 +18,8 @@ function getColor() {
 	blue = document.getElementById('color-blue');
 	black.onclick = function() {
 		context.fillStyle = 'black';
-		context.strokeStyle = 'black';
+    context.strokeStyle = 'black';
+    pencolor = 'black'
 		black.classList.add('active');
 		red.classList.remove('active');
 		green.classList.remove('active');
@@ -26,7 +27,8 @@ function getColor() {
 	};
 	red.onclick = function() {
 		context.fillStyle = 'red';
-		context.strokeStyle = 'red';
+    context.strokeStyle = 'red';
+    pencolor = 'red'
 		red.classList.add('active');
 		black.classList.remove('active');
 		green.classList.remove('active');
@@ -34,7 +36,8 @@ function getColor() {
 	};
 	green.onclick = function() {
 		context.fillStyle = 'green';
-		context.strokeStyle = 'green';
+    context.strokeStyle = 'green';
+    pencolor = 'green'
 		green.classList.add('active');
 		red.classList.remove('active');
 		black.classList.remove('active');
@@ -42,7 +45,8 @@ function getColor() {
 	};
 	blue.onclick = function() {
 		context.fillStyle = 'blue';
-		context.strokeStyle = 'blue';
+    context.strokeStyle = 'blue';
+    pencolor = 'blue'
 		blue.classList.add('active');
 		red.classList.remove('active');
 		green.classList.remove('active');
@@ -53,13 +57,15 @@ function getColor() {
 
 function getPenWidth() {
 	penThin.onclick = function(){
-		context.lineWidth = 4;
+    context.lineWidth = 4;
+    penwidth=4
 		jiw = context.lineWidth;
 		penThin.classList.add('active');
         penThick.classList.remove('active');
 	}
     penThick.onclick = function(){
-		context.lineWidth = 6;
+    context.lineWidth = 6;
+    penwidth=6
 		jiw = context.lineWidth;
 		penThick.classList.add('active');	
         penThin.classList.remove('active');		
@@ -162,19 +168,15 @@ function canvasSize() {
   board.height = y;
 };
 function autoCanvasSize() {
-    function canvasSize() {
-    var x = document.documentElement.clientWidth;
-    var y = document.documentElement.clientHeight;
-    board.width = x;
-    board.height = y;
 	context.lineWidth = jiw;
-  };
   canvasSize();
   window.onresize = function() {
 	var imageData = context.getImageData(0,0,board.width,board.height);
     canvasSize();
-	context.putImageData(imageData,0,0);
-	  context.lineWidth=4;
+	  context.putImageData(imageData,0,0);
+    context.fillStyle = pencolor;
+    context.strokeStyle = pencolor;
+    context.lineWidth = penwidth;
   };
 
 };
