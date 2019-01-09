@@ -37,12 +37,12 @@ z-index:1;
 }
 .colorList{
 	position:fixed;
-	top:15px;
-	right:100px;
+	top:60px;
+	right:20px;
 	z-index:1;
 }
 .colorList ul{
-	display:flex;
+	
 }
 
 .colorList ul li{
